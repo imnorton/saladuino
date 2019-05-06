@@ -13,7 +13,6 @@ int strawberry_value;
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("Reading From the Sensors...");
   delay(2000);
 }
 
@@ -26,12 +25,13 @@ void loop() {
   coriander_value = map(coriander_sensor,1023,0,0,100);
   strawberry_value = map(strawberry_sensor,1023,0,0,100);
 
-  Serial.print("Moisture : onion = ");
-  Serial.print(onion_value);
-  Serial.print("%. coriander = ");
-  Serial.print(coriander_value);
-  Serial.print("%. strawberry = ");
+  // { "strawberry": 33, "onion": 44, "coriander": 55 }
+  Serial.print("{ \"strawberry\": ");
   Serial.print(strawberry_value);
-  Serial.println("%.");
+  Serial.print(", \"onion\": ");
+  Serial.print(onion_value);
+  Serial.print(", \"coriander\": ");
+  Serial.print(coriander_value);
+  Serial.println(" }");
   delay(10000);
 }
